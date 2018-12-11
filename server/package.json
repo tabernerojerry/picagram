@@ -1,0 +1,41 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "jest": {
+    "setupTestFrameworkScriptFile": "./app/tests/setup.js",
+    "transform": {
+      ".js$": "babel-7-jest"
+    }
+  },
+  "scripts": {
+    "start": "NODE_ENV=production node dist/index.js",
+    "dev": "NODE_ENV=development nodemon -e js,graphql index --exec babel-node",
+    "build": "npm run clean && babel index.js -o dist/index.js && babel app -d dist/app --copy-files",
+    "clean": "rimraf dist/*",
+    "test": "NODE_ENV=test jest --detectOpenHandles"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.1.2",
+    "@babel/core": "^7.1.2",
+    "@babel/node": "^7.0.0",
+    "@babel/preset-env": "^7.1.0",
+    "babel-7-jest": "^21.3.3",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^23.6.0",
+    "jest": "^23.6.0",
+    "nodemon": "^1.18.4",
+    "regenerator-runtime": "^0.12.1",
+    "rimraf": "^2.6.2",
+    "standard": "^12.0.1"
+  },
+  "dependencies": {
+    "apollo-server-express": "^2.1.0",
+    "argon2": "^0.19.3",
+    "dotenv": "^6.1.0",
+    "express": "^4.16.4",
+    "graphql": "^14.0.2",
+    "mongoose": "^5.3.4"
+  }
+}

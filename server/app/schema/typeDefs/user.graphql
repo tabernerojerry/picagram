@@ -1,0 +1,29 @@
+type User {
+  id: ID!
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+}
+
+input SignUpInput {
+  email: String!
+  firstName: String!
+  lastName: String!
+  password: String!
+  confirmPassword: String!
+}
+
+input SignInInput {
+  email: String!
+  password: String!
+}
+
+extend type Query {
+  getCurrentUser: User
+}
+
+extend type Mutation {
+  signUp(input: SignUpInput): String
+  signIn(input: SignInInput!): String
+}
